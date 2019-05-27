@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Gofunme</title>
+    <title>GoFunMe</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,9 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render '/layouts/navbar', active: content_for(:nav_active) %>
+    <div class="container mt-5 mb-5">
+      <%= yield %>
+    </div>
   </body>
 </html>
