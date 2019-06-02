@@ -1,0 +1,5 @@
+<% if @event.user == current_user %>
+  <% provide :nav_active, 'my_events' %>
+<% else %>
+  <% provide :nav_active, 'discover' %>
+<% end %>

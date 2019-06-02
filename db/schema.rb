@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_27_000220) do
+ActiveRecord::Schema.define(version: 2019_06_01_231850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2019_05_27_000220) do
     t.datetime "end_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description", null: false
+    t.string "image_url"
     t.index ["creator_id"], name: "index_events_on_creator_id"
     t.index ["start_at"], name: "index_events_on_start_at"
   end
@@ -36,7 +38,6 @@ ActiveRecord::Schema.define(version: 2019_05_27_000220) do
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "department", null: false
-    t.string "team", null: false
     t.date "started_on", null: false
     t.integer "level", null: false
     t.datetime "created_at", null: false

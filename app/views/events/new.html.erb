@@ -1,1 +1,15 @@
 <% provide :nav_active, 'my_events' %>
+
+<div class="row">
+  <div class="col-3"></div>
+  <div class="col-6 col-offset-3">
+    <%= simple_form_for(@event, url: events_path) do |f| %>
+      <%= f.input :title %>
+      <%= f.input :description %>
+      <%= f.input :image_url %>
+      <%= f.input :start_at %>
+      <%= f.input :end_at %>
+      <%= f.submit "Create event", class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
