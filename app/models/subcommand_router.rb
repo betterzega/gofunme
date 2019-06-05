@@ -9,12 +9,14 @@ class SubcommandRouter
       Handler::Test
     when 'add'
       Handler::AddInterest
-    when 'interests'
-      Handler::ListPeople
     when 'people'
+      Handler::ListPeople
+    when 'interests'
       Handler::ListInterest
     when 'random'
       Handler::Random
+    else
+      Handler::Help
     end
   end
 
