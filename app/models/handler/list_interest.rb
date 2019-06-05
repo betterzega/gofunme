@@ -9,7 +9,7 @@ class Handler::ListInterest
 
   def response
     {
-      text: interest_text.join(" ")
+      text: response_text
     }
   end
 
@@ -17,11 +17,25 @@ class Handler::ListInterest
 
   attr_reader :text
 
-  def interest_text
-    text.split[1..]
+  def response_text
+    if user.present? && interests.present?
+      "#{username_text} has the following interests: #{interests.to_sentence}"
+    elsif user.present?
+      "#{username_text} does not have any interests :("
+    else
+      "#{username_text} is not found :("
+    end
   end
 
-  def interest
-    @interest
+  def username_text
+    text.split.second
+  end
+
+  def user
+    @user ||= User.find_by(slack_username: username_text)
+  end
+
+  def interests
+    @interests ||= user.interests.map(&:name)
   end
 end
