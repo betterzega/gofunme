@@ -19,7 +19,7 @@ class User < ApplicationRecord
     "other" => "Other"
   }.freeze
 
-  has_many :events, foreign_key: :creator_id
+  has_many :interests
 
   validates :first_name, :last_name, :department, :started_on, :level, presence: true
 end
