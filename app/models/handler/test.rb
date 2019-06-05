@@ -1,7 +1,7 @@
 class Handler::Test
-  def initialize(text:)
-    @text = text
-  end
+  include ActiveModel::Model
+
+  attr_accessor :user_name, :user_id, :text
 
   def response
     {

@@ -1,8 +1,12 @@
 class Handler::ListInterest
-  def initialize(text:)
-    @text = text
-  end
+  include ActiveModel::Model
 
+  attr_accessor :user_name, :user_id, :text
+
+  def process
+    true
+  end
+  
   def response
     {
       text: other_words.join(" "),

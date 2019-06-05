@@ -3,16 +3,18 @@ class SubcommandRouter
     @text = text
   end
 
-  def handler
+  def handler_class
     case subcommand
     when 'test'
-      Handler::Test.new(text: text)
+      Handler::Test
     when 'add'
-      Handler::AddInterest.new(text: text)
-    when 'list'
-      Handler::ListInterest.new(text: text)
+      Handler::AddInterest
+    when 'interests'
+      Handler::ListPeople
     when 'people'
-      Handler::ListPeople.new(text: text)
+      Handler::ListInterest
+    when 'random'
+      Handler::Random
     end
   end
 

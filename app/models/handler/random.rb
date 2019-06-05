@@ -1,4 +1,4 @@
-class Handler::ListPeople
+class Handler::Random
   include ActiveModel::Model
 
   attr_accessor :user_name, :user_id, :text
@@ -9,7 +9,7 @@ class Handler::ListPeople
 
   def response
     {
-      text: other_words.join(" ")
+      text: response_text
     }
   end
 
@@ -17,7 +17,7 @@ class Handler::ListPeople
 
   attr_reader :text
 
-  def other_words
-    text.split[1..]
+  def response_text
+    "a random interest"
   end
 end
