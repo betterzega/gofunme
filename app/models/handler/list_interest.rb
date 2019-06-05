@@ -4,7 +4,7 @@ class Handler::ListInterest
   attr_accessor :user_name, :user_id, :text
 
   def process
-    true
+    User.find_or_create_by(slack_username: user_name, slack_user_id: user_id)
   end
 
   def response
@@ -37,5 +37,14 @@ class Handler::ListInterest
 
   def interests
     @interests ||= user.interests.map(&:name)
+  end
+
+  def interests
+    user = User.find_or_create_by(slack_username: user_name, slack_user_id: user_id)
+    Interest.where(user: user).pluck(:name)
+  end
+
+  def response_text
+    "Your current interests: #{interests.join(' ')}"
   end
 end
