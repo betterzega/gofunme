@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_05_194918) do
+ActiveRecord::Schema.define(version: 2019_06_05_210100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -32,11 +32,6 @@ ActiveRecord::Schema.define(version: 2019_06_05_194918) do
     t.index ["user_id"], name: "index_interests_on_user_id"
   end
 
-  create_table "interests_slack_groups", id: false, force: :cascade do |t|
-    t.uuid "interest_id", null: false
-    t.uuid "slack_group_id", null: false
-  end
-
   create_table "leaders", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "slack_group_id"
     t.uuid "user_id"
@@ -50,6 +45,7 @@ ActiveRecord::Schema.define(version: 2019_06_05_194918) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "interest", null: false
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

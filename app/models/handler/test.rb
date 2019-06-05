@@ -3,6 +3,10 @@ class Handler::Test
 
   attr_accessor :user_name, :user_id, :text
 
+  def process
+    true
+  end
+
   def response
     {
       text: other_words.join(" "),

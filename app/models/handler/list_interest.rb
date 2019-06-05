@@ -6,11 +6,10 @@ class Handler::ListInterest
   def process
     true
   end
-  
+
   def response
     {
-      text: other_words.join(" "),
-      response_type: "in_channel" # add to make it visible to everyone in the channel
+      text: interest_text.join(" ")
     }
   end
 
@@ -18,7 +17,11 @@ class Handler::ListInterest
 
   attr_reader :text
 
-  def other_words
+  def interest_text
     text.split[1..]
+  end
+
+  def interest
+    @interest
   end
 end

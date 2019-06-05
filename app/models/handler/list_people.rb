@@ -17,7 +17,7 @@ class Handler::ListPeople
 
   attr_reader :text
 
-  def other_words
+  def interest_text
     text.split[1..]
   end
 end

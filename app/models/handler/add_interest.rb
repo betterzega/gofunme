@@ -4,6 +4,10 @@ class Handler::AddInterest
   attr_accessor :user_name, :user_id, :text
 
   def process
+    user
+    interest
+    channel
+    true
   end
 
   def response
@@ -24,27 +28,44 @@ class Handler::AddInterest
     if only_person_with_interest?
       "You are the first person with this interest! Add more interests to find others like you!"
     elsif two_people_with_interest?
-      "#{} has a similar interest of #{interest} as you!"
-    elsif creating_channel_for_interest?
+      "#{users_with_similar_interests.first.user.slack_username} has a similar interest of #{interest_text} as you!"
+    elsif three_people_with_interest?
       "There are a lot of people with a similar interest! Creating a channel for everyone to chat!"
     else
-      "There is a channel for #{interest}! Adding you to the channel!"
+      "There is a channel for #{interest_text}! Adding you to the channel!"
     end
   end
 
   def only_person_with_interest?
-
+    users_with_similar_interests.count == 0
   end
 
   def two_people_with_interest?
-
+    users_with_similar_interests.count == 1
   end
 
-  def creating_channel_for_interest?
-    
+  def three_people_with_interest?
+    users_with_similar_interests.count == 2
+  end
+
+  def interest_text
+    text.split.second
+  end
+
+  def users_with_similar_interests
+    @users_with_similar_interests_count ||= Interest.where.not(user_id: user.id)
+  end
+
+  def channel
+    return unless users_with_similar_interests.count > 1
+    @channel ||= SlackGroup.find_or_create_by!(name: interest_text, interest: interest_text)
+  end
+
+  def user
+    @user ||= User.find_or_create_from_slack!(slack_user_id: user_id, slack_username: user_name)
   end
 
   def interest
-    text.split[1..]
+    @interest ||= user.interests.find_or_create_by!(name: interest_text)
   end
 end
