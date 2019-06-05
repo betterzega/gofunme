@@ -7,6 +7,12 @@ class SubcommandRouter
     case subcommand
     when 'test'
       Handler::Test.new(text: text)
+    when 'add'
+      Handler::AddInterest.new(text: text)
+    when 'list'
+      Handler::ListInterest.new(text: text)
+    when 'people'
+      Handler::ListPeople.new(text: text)
     end
   end
 
