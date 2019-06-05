@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root "home#index"
 
+  resources :incoming_messages
+
   resources :events
 
   resources :users, only: [] do
