@@ -38,13 +38,4 @@ class Handler::ListInterest
   def interests
     @interests ||= user.interests.map(&:name)
   end
-
-  def interests
-    user = User.find_or_create_by(slack_username: user_name, slack_user_id: user_id)
-    Interest.where(user: user).pluck(:name)
-  end
-
-  def response_text
-    "Your current interests: #{interests.join(' ')}"
-  end
 end
