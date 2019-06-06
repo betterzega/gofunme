@@ -28,7 +28,7 @@ class Handler::ListInterest
   end
 
   def username_text
-    text.split.second
+    text.split.second.replace("@", "")
   end
 
   def user
