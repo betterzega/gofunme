@@ -15,6 +15,8 @@ class SubcommandRouter
       Handler::ListInterest
     when 'random'
       Handler::Random
+    when 'latest'
+      Handler::LatestInterest
     else
       Handler::Help
     end
