@@ -11,9 +11,9 @@ class SlackGroup < ApplicationRecord
     slack_client = Slack::Client.new
     response = slack_client.channels_create(name: name)
     slack_channel_id = response["channel"]["id"]
-    slack_usernames = User.where(id: Interest.where(name: name).pluck(:user_id))
-    slack_usernames.each do |username|
-      slack_client.channels_invite(channel: slack_channel_id, user: username)
+    slack_userids = User.where(id: Interest.where(name: name).pluck(:user_id)).pluck(:slack_user_id)
+    slack_userids.each do |user_id|
+      invite_response = slack_client.channels_invite(channel: slack_channel_id, user: user_id)
     end
   end
 end
