@@ -59,6 +59,7 @@ class Handler::AddInterest
 
   def invite
     return unless users_with_similar_interests.count > 2
+    slack_client = Slack::Client.new
     @invite ||= slack_client.channels_invite(channel: channel.slack_channel_id, user: user.slack_user_id)
   end
 
