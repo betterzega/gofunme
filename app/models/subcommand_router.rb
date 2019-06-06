@@ -1,6 +1,6 @@
 class SubcommandRouter
   def initialize(text:)
-    @text = text
+    @text = text.sub("@", "")
   end
 
   def handler_class
