@@ -8,8 +8,12 @@ class SlackGroup < ApplicationRecord
   private
 
   def create_remote_group
-    slack_client = Slack::Client.new
+    slack_client = Slack::Client.new token: token
     response = slack_client.channels_create(name: name)
     self.slack_channel_id = response["channel"]["id"]
+  end
+
+  def token
+    @token ||= ENV["SLACK_OATH_TOKEN"]
   end
 end
