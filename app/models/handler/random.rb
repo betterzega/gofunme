@@ -22,6 +22,6 @@ class Handler::Random
   end
 
   def random_interest
-    @random_interest ||= Interest.limit(1).order("RANDOM()")
+    @random_interest ||= Interest.order("RANDOM()").first
   end
 end
