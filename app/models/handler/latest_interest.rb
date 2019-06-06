@@ -18,10 +18,10 @@ class Handler::LatestInterest
   attr_reader :text
 
   def response_text
-    "Latest top 5 interests are: #{interests.join(', ')}"
+    "Latest top interests are: #{interests.join(', ')}"
   end
 
   def interests
-    @interests ||= Interest.order(created_at: :desc).limit(5).map(&:name)
+    @interests ||= Interest.order(created_at: :desc).limit(5).pluck(:name).uniq
   end
 end
