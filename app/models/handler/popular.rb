@@ -18,10 +18,10 @@ class Handler::Popular
   attr_reader :text
 
   def response_text
-    "Top ten interests: `#{popular_interests.join(' ')}`"
+    "Top ten interests: `#{popular_interests.join(', ')}`"
   end
 
   def popular_interests
-    @random_interest ||= Interest.group(:name).order("COUNT(DISTINCT Interest.user_id)").last(10).pluck(:name)
+    @random_interest ||= Interest.select(“name, COUNT(user_id) as num”).group(:name).order(“num”).last(10).pluck(:name)
   end
 end
