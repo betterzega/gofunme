@@ -7,6 +7,7 @@ class Handler::AddInterest
     user
     interest
     channel
+    invite
     true
   end
 
@@ -54,6 +55,10 @@ class Handler::AddInterest
 
   def users_with_similar_interests
     @users_with_similar_interests_count ||= Interest.where(name: interest_text).where.not(user_id: user.id)
+  end
+
+  def invite
+    @invite ||= slack_client.channels_invite(channel: channel.slack_channel_id, user: user.slack_user_id)
   end
 
   def channel
