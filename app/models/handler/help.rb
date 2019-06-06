@@ -33,7 +33,7 @@ class Handler::Help
       "`/hobbylobby latest` : See the latest interests that were added\n" +
       "`/hobbylobby random` : See random interests\n" +
       "For more commands, type `/hobbylobby`\n" +
-      "\n*Have Fun!!* (edited)\n"
+      "\n*Have Fun!!*\n"
     else
       "`#{text.split.first}` is *not* a valid command.\n" +
       "- To add an interest, use `/hobbylobby add _interest_` \n" +
@@ -45,7 +45,6 @@ class Handler::Help
   end
 
   def first_time_user?
-    true
-    # User.find_by(slack_user_id :user_id).count == 0
+    User.find_by(slack_user_id :user_id).count == 0
   end
 end
