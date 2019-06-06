@@ -22,6 +22,6 @@ class Handler::Popular
   end
 
   def popular_interests
-    @random_interest ||= Interest.select("name, COUNT(user_id) as num”).group(:name).order(“num”).last(10).pluck(:name)
+    @random_interest ||= Interest.select("name, COUNT(user_id) as num").group(:name).order("num").last(10).pluck(:name)
   end
 end
