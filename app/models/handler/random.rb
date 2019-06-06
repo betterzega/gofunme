@@ -18,7 +18,7 @@ class Handler::Random
   attr_reader :text
 
   def response_text
-    "Random Interest: `#{random_interest}`"
+    "Random Interest: `#{random_interest.name}`"
   end
 
   def random_interest
