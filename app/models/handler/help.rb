@@ -22,7 +22,7 @@ class Handler::Help
   end
 
   def response_text
-    "#{text.split.first} is not a valid command.\n" +
+    "`#{text.split.first}` is *not* a valid command.\n" +
     "- To add an interest, use `/hobbylobby add _interest_` \n" +
     "- To see what interests someone has, use `/hobbylobby interests _slackname_` \n" +
     "- To see who else has the same interest, use `/hobbylobby people _interest_` \n" +
