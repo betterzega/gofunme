@@ -18,6 +18,10 @@ class Handler::Random
   attr_reader :text
 
   def response_text
-    "a random interest"
+    "Random Interest: `#{random_interest}`"
+  end
+
+  def random_interest
+    @random_interest ||= Interest.limit(1).order("RANDOM()")
   end
 end
