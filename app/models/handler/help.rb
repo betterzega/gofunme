@@ -41,6 +41,7 @@ class Handler::Help
       "- To see who else has the same interest, use `/hobbylobby people _interest_` \n" +
       "- To see a random interest, use `/hobbylobby random` \n" + 
       "- To see the latest subscribed interests, use `/hobbylobby latest` \n"
+      "- To see the latest subscribed interests, use `/hobbylobby popular` \n"
     end
   end
 
