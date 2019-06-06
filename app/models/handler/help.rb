@@ -29,7 +29,7 @@ class Handler::Help
       "- Let us know your interests by typing `/hobbylobby add _interest_`.\n" +
       "- If a slack channel of like-minded people already exists, you’ll be added to it; if it doesn’t, we’ll save your interests, and automatically create a channel for you when 2 other people express the same interests.\n" +
       "\n*Looking for some inspiration? Try these other fun commands:*\n" +
-      "`/hobbylobby top_interests` : Get a list of the top interests\n" +
+      "`/hobbylobby popular` : Get a list of the top interests\n" +
       "`/hobbylobby latest` : See the latest interests that were added\n" +
       "`/hobbylobby random` : See random interests\n" +
       "For more commands, type `/hobbylobby`\n" +
