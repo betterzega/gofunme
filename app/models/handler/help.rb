@@ -45,6 +45,6 @@ class Handler::Help
   end
 
   def first_time_user?
-    User.find_by(slack_user_id :user_id).count == 0
+    User.find_by(slack_user_id: user_id).blank?
   end
 end
