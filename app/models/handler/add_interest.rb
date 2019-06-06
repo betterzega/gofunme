@@ -53,7 +53,7 @@ class Handler::AddInterest
   end
 
   def users_with_similar_interests
-    @users_with_similar_interests_count ||= Interest.where.not(user_id: user.id)
+    @users_with_similar_interests_count ||= Interest.where(name: interest_text).not(user_id: user.id)
   end
 
   def channel
