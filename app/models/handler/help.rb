@@ -22,10 +22,10 @@ class Handler::Help
   end
 
   def response_text
-    "#{other_words.join(' ')} is not a valid command, valid commands are: #{commands.join(' ')}"
-  end
-
-  def commands
-    ['test', 'add', 'people', 'interests', 'random']
+    "#{text.split.first} is not a valid command.\n" +
+    "- To add an interest, use `/hobbylobby add _interest_` \n" +
+    "- To see what interests someone has, use `/hobbylobby interests _slackname_` \n" +
+    "- To see who else has the same interest, use `/hobbylobby people _interest_` \n" +
+    "- To checkout a random interest, use `/hobbylobby random` \n"
   end
 end
