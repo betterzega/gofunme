@@ -9,8 +9,7 @@ class Handler::Test
 
   def response
     {
-      text: other_words.join(" "),
-      response_type: "in_channel" # add to make it visible to everyone in the channel
+      text: "- To see who else has the same interest, use `/hobbylobby people _interest_` \n - To see the latest subscribed interests, use `/hobbylobby latest`"
     }
   end
 
